@@ -11,7 +11,7 @@ var generatePassword = function(){
     var specialCharacters = "!'`~@#$%^&*()_+-][}{|><?;:=";
     
     //this will determine the length of the password
-    var passwordLength = prompt ("Please choose a password length between 8 and 128.");
+    var passwordLength = prompt("Please choose a password length between 8 and 128.");
         if (passwordLength < 8 || passwordLength > 128) {
         alert("Please choose option between 8 and 128.");
         return passwordLength;
@@ -40,6 +40,7 @@ var generatePassword = function(){
         }
     } 
 
+    //this will determine whether the password contains special characters
     var promptSpecialChars = function() {
         var hasSpecialChars = confirm("Do you want to include special characters?");
         if (hasSpecialChars === true) {
@@ -47,6 +48,12 @@ var generatePassword = function(){
         }
     }
     
+    //call the functions from above
+    hasLower()
+    hasUpper()
+    hasNumbers()
+    hasSpecialChars()
+    //this is mostly where I'm stuck is getting the actual output of characters
     password = (promptLowercase + promptUppercase + promptNumbers + promptSpecialChars);
     password = Math.floor(Math.random());
   
