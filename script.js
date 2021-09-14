@@ -9,42 +9,42 @@ var generatePassword = function(){
     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var numbers = "0123456789";
     var specialCharacters = "!'`~@#$%^&*()_+-][}{|><?;:=";
-    
+
     //this will determine the length of the password
     var passwordLength = prompt("Please choose a password length between 8 and 128.");
         if (passwordLength < 8 || passwordLength > 128) {
         alert("Please choose option between 8 and 128.");
-        return passwordLength;
+        return generatePassword;
         }
 
     //this will determine whether the password contains lowercase letters
-    var promptLowercase = function (){
-        var hasLower = confirm("Do you want to include lowercase letters?");
+    var hasLower = function (){
+        let hasLower = confirm("Do you want to include lowercase letters?");
         if (hasLower === true){
-        return password = password + lowercase;
+        password = password + lowercase;
         }
     }
     //this will determine whether the password contains uppercase letters
-    var promptUppercase = function() {
-        var hasUpper = confirm("Will your password contain uppercase letters?")
+    var hasUpper = function() {
+        let hasUpper = confirm("Will your password contain uppercase letters?")
         if (hasUpper === true) {
-        return password = password + uppercase;
+        password = password + uppercase;
         }
     }
    
     //this will determine whether the password contains numbers
-    var promptNumbers = function() {
-        var hasNumbers = confirm("Do you want to include numbers?");
+    var hasNumbers = function() {
+        let hasNumbers = confirm("Do you want to include numbers?");
         if (hasNumbers === true) {
-        return password = password + numbers
+        password = password + numbers
         }
     } 
 
     //this will determine whether the password contains special characters
-    var promptSpecialChars = function() {
-        var hasSpecialChars = confirm("Do you want to include special characters?");
+    var hasSpecialChars = function() {
+        let hasSpecialChars = confirm("Do you want to include special characters?");
         if (hasSpecialChars === true) {
-        return password = password + specialCharacters;
+        password = password + specialCharacters;
         }
     }
     
@@ -53,10 +53,15 @@ var generatePassword = function(){
     hasUpper()
     hasNumbers()
     hasSpecialChars()
-    //this is mostly where I'm stuck is getting the actual output of characters
-    password = (promptLowercase + promptUppercase + promptNumbers + promptSpecialChars);
-    password = Math.floor(Math.random());
-  
+// this should allow for the final output
+    var thePassword = "";
+    for (let i = 0; i < passwordLength; i++){
+      
+      var passwordOptions = Math.floor(Math.random() * password.length);
+      thePassword = thePassword + password[passwordOptions];
+      
+    }
+    return thePassword;
 }
 
 // Get references to the #generate element
